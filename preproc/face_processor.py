@@ -1,12 +1,11 @@
 import sys
-sys.path.append(sys.path[0] + '/..')
-from face_align import FaceAlignment, LandmarksType
 import numpy as np
 import skvideo.io
 import cv2
 import csv
 from skimage import transform as tf
 import os
+from .face_align import FaceAlignment, LandmarksType
 
 # Code obtained from https://github.com/DinoMan/face-processor
 
