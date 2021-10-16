@@ -2,7 +2,9 @@
 
 Official implementation of  *A cappella: Audio-visual Singing VoiceSeparation*, British Machine Vision Conference 2021
 
-Project page: [ipcv.github.io/Acappella/](https://ipcv.github.io/Acappella/)
+Project page: [ipcv.github.io/Acappella/](https://ipcv.github.io/Acappella/)  
+Paper: [Arxiv](https://arxiv.org/abs/2104.09946), BMVC (not available yet)  
+
 
 ## Running a demo / Y-Net Inference
 
@@ -15,8 +17,10 @@ We provide simple functions to load models with pre-trained weights. Steps:
 from VnBSS import y_net_gr # or from models import y_net_gr 
 model = y_net_gr(n=1)
 ```
+Check a demo fully working:  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1jFDy9vkuXDqyS63y0SCHkNTb7p494fSp?usp=sharing)
 
-Check this [Google Colab]() example
+## Citation
 ```
 @inproceedings{acappella,
     author    = {Juan F. Montesinos and
@@ -28,8 +32,17 @@ Check this [Google Colab]() example
 
 }
 ```
+![Repository under construction](https://ps.w.org/easy-under-construction/assets/banner-772x250.png?rev=2417171)
+.  
+.  
+.  
+.  
+.  
+.  
+.  
+.  
 
-## Training / Using DEV code
+# Training / Using DEV code
 ###Training
 The most difficult part is to prepare the dataset as everything is builded upon a very specific format.  
 To run training:  
