@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+the_circle_of_life/
 # C extensions
 *.so
 .idea
@@ -130,3 +131,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+vyu3HU3XWi4.mkv

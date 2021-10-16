@@ -55,17 +55,21 @@ Possible model names are: `y_net_g`, `y_net_gr`, `y_net_m`,`y_net_r`,`u_net`,`ll
 3. Replace the paths of `manuscript_scripts/auto_metrics.py` by your experiment_directory path.  
 4. Run: `python manuscript_scripts/auto_metrics.py` to visualise results.  
 
-## Code structure  
-The code is defined as an importable package `VnBSS` + a configuration package `config` + scripts. 
+### It's a complicated framework. HELP!
+The best option to run the framework is to debug! Having a runable code helps to see input shapes, dataflow and
+to run line by line. Download [The circle of life](https://ipcv.github.io/Acappella/dataset/) demo with the files
+already processed. It will act like a dataset of 6 samples. You can download it from
+[Google Drive](https://drive.google.com/file/d/1An3kalwUpyPWpeH_urJchWsWaffVj3_J/view?usp=sharing) 1.1 Gb.
+1. Unzip the file  
+2. run `python run.py -m y_net_gr` (for example)  
+
+Everything has been configured to run by default this way.
+
+
 #### The model
 Each effective model is wrapped by a `nn.Module` which takes care of computing the STFT, the mask, returning the waveform
 etcetera... This wrapper can be found at `VnBSS`>`models`>`y_net.py`>`YNet`. To get rid of this you can simply inherit the class,
 take minimum layers and keep the `core_forward` method, which is the inference step without the miscelanea.  
-#### The dataloader  
-The dataloader is a multimodal dataloader. Basically, it inpects a directory and generates a tree. It assumes each children 
-folder is a different modality (in this case there will be audio and video). It pairs the files for all the modalities 
-and offers them to the user automatically. A path-exclusion system allows ignoring certain folders permitting to create 
-different subsets easily. 
 
 
 ## FAQs  
@@ -74,4 +78,17 @@ Go to `config`>`optimizer.json`
 2. *How to change clip duration, video framerate, STFT parameters or audio samplerate?*  
 Go to `config`>`__init__.py`  
 3. *How to change the batch size or the amount of epochs?*  
-Go to `config`>`hyptrs.json`
+Go to `config`>`hyptrs.json`  
+4. *How to dump predictions from the training and test set*  
+Go to `default.py`. Modify `DUMP_FILES` (can be controlled at a subset level). `force` argument 
+   skips the iteration-wise conditions and dumps for every single network prediction.  
+5. *Is tensorboard enabled?*  
+Yes, you will find tensorboard records at `your_experiment_directory/used_workname/tensorboard`  
+6. *Can I resume an experiment?*  
+Yes, if you set exactly the same experiment folder and workname, the system will detect it and will resume from there.  
+7. *I'm trying to resume but found `AssertionError`*
+If there is an exception before running the model
+8. *How to change the amount of layers of U-Net*  
+U-net is  build dynamically given a list of layers per block as shown in `models`>`__init__.py` from outer to inner blocks.  
+9. *How to modify the default network values?*  
+The json file `config`>`net_cfg.json` overwrites any default configuration from the model. 

@@ -1,0 +1,13 @@
+{
+  "loss_criterion": "MSE",
+  "log_sp_enabled": false,
+  "mel_enabled": false,
+  "complex_enabled": true,
+  "weighted_loss": true,
+  "loss_on_mask": true,
+  "binary_mask": false,
+  "downsample_coarse": true,
+  "downsample_interp": false,
+  "mean": [0.43216, 0.394666, 0.37645],
+  "std": [0.22803, 0.22145, 0.216989]
+}

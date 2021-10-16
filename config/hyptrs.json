@@ -1,0 +1,16 @@
+{
+  "batch_size":10,
+  "epochs":2000,
+  "mouth_shape": [96,96],
+  "crop_mouth": true,
+  "balanced_sampling": true,
+  "overfit": false,
+  "n_sources": 1,
+    "multitask": {
+    "enabled": false,
+    "loss": "ContrastiveLoss",
+    "independent_encoder": true
+  },
+  "savgol_kwargs":{"enabled": false,"order": 2,"size": 7}
+
+}
