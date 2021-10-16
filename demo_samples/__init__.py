@@ -6,5 +6,5 @@ def download_gg(id, dst):
 
 
 def jacksons_five_full(dst_dir='.'):
-    download_gg('1ACTLuOY3cBHmqmUXdVoypJsMTtIYXHrH', os.path.join(dst, 'jacksons_five_full.mkv'))
+    download_gg('1ACTLuOY3cBHmqmUXdVoypJsMTtIYXHrH', os.path.join(dst_dir, 'jacksons_five_full.mkv'))
     return os.path.join(dst_dir, 'jacksons_five_full.mkv')
