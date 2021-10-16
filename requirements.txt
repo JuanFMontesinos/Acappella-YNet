@@ -2,8 +2,8 @@ acappella-info==0.1.post1
 dlib==19.20.0
 face-alignment==1.0.0
 facenet-pytorch==2.5.1
-flerken-nightly==1.7.post5
 torch==1.9.0
 torch-mir-eval==0.4
 torchsummary==1.5.1
 TorchTree-nightly==0.0.3.post1
+flerken-nightly==1.7.post5
