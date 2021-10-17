@@ -350,7 +350,7 @@ def y_net_gr(debug_dict=DEBUG, pretrained=True, n=1):
         from torch import load
         if not os.path.exists(WEIGHTS_PATH):
             os.mkdir(WEIGHTS_PATH)
-        path = os.path.join(WEIGHTS_PATH, 'y_net_m7.pth')
+        path = os.path.join(WEIGHTS_PATH, 'y_net_gr7.pth')
         download_google('1GN1bGyp1TlZkkgSQMwI_CGOskWXNLjxd', path)
         state_dict = load(path, map_location=lambda storage, loc: storage)
         model.load_state_dict(state_dict, strict=True)
@@ -366,7 +366,7 @@ def y_net_g(debug_dict=DEBUG, pretrained=True, n=1):
         from torch import load
         if not os.path.exists(WEIGHTS_PATH):
             os.mkdir(WEIGHTS_PATH)
-        path = os.path.join(WEIGHTS_PATH, 'y_net_m7.pth')
+        path = os.path.join(WEIGHTS_PATH, 'y_net_g7.pth')
         download_google('1WJ8vEh6TWeKPE2nQKBXLXygrVwk7LHVm', path)
         state_dict = load(path, map_location=lambda storage, loc: storage)
         model.load_state_dict(state_dict, strict=True)
