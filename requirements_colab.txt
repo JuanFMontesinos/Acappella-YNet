@@ -1,0 +1,7 @@
+youtube-dl
+scikit-video
+acappella-info==0.1.post1
+torch==1.9.0
+torchaudio==0.9.0
+TorchTree-nightly==0.0.3.post1
+flerken-nightly==1.7.post5
