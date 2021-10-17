@@ -275,7 +275,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Preprocessing')
     parser.add_argument('--data_dir', help='Directory where all dataset files will be stored',
-                        type=str, default='/mnt/DATA/dataset/acapsol/acappella')
+                        type=str, default=None)
     parser.add_argument('--device_id', help='Device for training the experiments',
                         type=int, default=0)
     args = parser.parse_args()

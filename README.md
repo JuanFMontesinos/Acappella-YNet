@@ -15,8 +15,9 @@ We provide simple functions to load models with pre-trained weights. Steps:
 
 ```
 from VnBSS import y_net_gr # or from models import y_net_gr 
-model = y_net_gr(n=1)
+model = y_net_gr()
 ```
+Examples can be found at `y_net`>`examples` or  
 Check a demo fully working:  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1jFDy9vkuXDqyS63y0SCHkNTb7p494fSp?usp=sharing)
 
@@ -32,9 +33,6 @@ Check a demo fully working:
 
 }
 ```
-![Repository under construction](https://ps.w.org/easy-under-construction/assets/banner-772x250.png?rev=2417171)
-.  
-.  
 .  
 .  
 .  
@@ -43,7 +41,7 @@ Check a demo fully working:
 .  
 
 # Training / Using DEV code
-###Training
+### Training
 The most difficult part is to prepare the dataset as everything is builded upon a very specific format.  
 To run training:  
 `python run.py -m model_name --workname experiment_name --arxiv_path directory_of_experiments --pretrained_from path_pret_weights`  
@@ -61,7 +59,7 @@ to run line by line. Download [The circle of life](https://ipcv.github.io/Acappe
 already processed. It will act like a dataset of 6 samples. You can download it from
 [Google Drive](https://drive.google.com/file/d/1An3kalwUpyPWpeH_urJchWsWaffVj3_J/view?usp=sharing) 1.1 Gb.
 1. Unzip the file  
-2. run `python run.py -m y_net_gr` (for example)  
+2. run `python run.py -m y_net_gr` (for example) TODO :D   
 
 Everything has been configured to run by default this way.
 
@@ -71,6 +69,10 @@ Each effective model is wrapped by a `nn.Module` which takes care of computing t
 etcetera... This wrapper can be found at `VnBSS`>`models`>`y_net.py`>`YNet`. To get rid of this you can simply inherit the class,
 take minimum layers and keep the `core_forward` method, which is the inference step without the miscelanea.  
 
+## Downloading the datasets  
+To download the Acappella Dataset run the script at `preproc`>`preprocess.py`  
+To download the demos used in the website run `preproc`>`demo_preprocessor.py`  
+Audioset can be downloaded via webapp, `streamlit run audioset.py`  
 
 ## FAQs  
 1. *How to change the optimizer's hyperparameters?*  
