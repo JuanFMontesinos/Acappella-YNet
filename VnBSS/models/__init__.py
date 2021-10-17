@@ -1,6 +1,6 @@
-import copy
 import inspect
 import os
+from copy import copy
 
 from ..utils import ParamFinder
 
@@ -300,6 +300,7 @@ _4BLOCK_Y_NET = copyupdt(_BASE_Y_NET_CFG,
                           "layer_distribution": [32, 64, 128, 256, 256, 256, 512]}
                          )
 WEIGHTS_PATH = './model_weights'
+DEBUG = {'isnan': True, 'ds_autogen': False, "overfit": False, 'verbose': False}
 
 
 #################################
@@ -308,13 +309,13 @@ def download_google(fileID, dst):
     gdd.download_file_from_google_drive(file_id=fileID, dest_path=dst)
 
 
-def y_net_mr(debug_dict, pretrained=True, n=1):
+def y_net_mr(debug_dict=DEBUG, pretrained=True, n=1):
     constructor = ModelConstructor(debug=debug_dict, n=n, **_DEFAULT_CFG)
-    iter_param, model, model_kwargs = constructor.prepare('y_net_m').update(video_enabled=True,
-                                                                            **_BASE_Y_NET_CFG).build()
+    _BASE_Y_NET_CFG['video_enabled'] = True
+    iter_param, model, model_kwargs = constructor.prepare('y_net_m').update(**_BASE_Y_NET_CFG).build()
     if pretrained:
         from torch import load
-        if os.path.exists(WEIGHTS_PATH):
+        if not os.path.exists(WEIGHTS_PATH):
             os.mkdir(WEIGHTS_PATH)
         path = os.path.join(WEIGHTS_PATH, 'y_net_mr7.pth')
         download_google('1dEBboJPEJSMrIZSxMTSBlQzWPzsdmUdm', path)
@@ -323,13 +324,13 @@ def y_net_mr(debug_dict, pretrained=True, n=1):
     return model
 
 
-def y_net_m(debug_dict, pretrained=True, n=1):
+def y_net_m(debug_dict=DEBUG, pretrained=True, n=1):
     constructor = ModelConstructor(debug=debug_dict, n=n, **_DEFAULT_CFG)
-    iter_param, model, model_kwargs = constructor.prepare('y_net_m').update(video_enabled=True,
-                                                                            **_BASE_Y_NET_CFG).build()
+    _BASE_Y_NET_CFG['video_enabled'] = True
+    iter_param, model, model_kwargs = constructor.prepare('y_net_m').update(**_BASE_Y_NET_CFG).build()
     if pretrained:
         from torch import load
-        if os.path.exists(WEIGHTS_PATH):
+        if not os.path.exists(WEIGHTS_PATH):
             os.mkdir(WEIGHTS_PATH)
         path = os.path.join(WEIGHTS_PATH, 'y_net_m7.pth')
         download_google('1HP1O9JiDJx5LuaJA3exYVvnd6oOcITHN', path)
@@ -338,13 +339,13 @@ def y_net_m(debug_dict, pretrained=True, n=1):
     return model
 
 
-def y_net_gr(debug_dict, pretrained=True, n=1):
+def y_net_gr(debug_dict=DEBUG, pretrained=True, n=1):
     constructor = ModelConstructor(debug=debug_dict, n=n, **_DEFAULT_CFG)
-    iter_param, model, model_kwargs = constructor.prepare('y_net_g').update(skeleton_enabled=True,
-                                                                            **_BASE_Y_NET_CFG).build()
+    _BASE_Y_NET_CFG['skeleton_enabled'] = True
+    iter_param, model, model_kwargs = constructor.prepare('y_net_g').update(**_BASE_Y_NET_CFG, n=n).build()
     if pretrained:
         from torch import load
-        if os.path.exists(WEIGHTS_PATH):
+        if not os.path.exists(WEIGHTS_PATH):
             os.mkdir(WEIGHTS_PATH)
         path = os.path.join(WEIGHTS_PATH, 'y_net_m7.pth')
         download_google('1GN1bGyp1TlZkkgSQMwI_CGOskWXNLjxd', path)
@@ -353,13 +354,13 @@ def y_net_gr(debug_dict, pretrained=True, n=1):
     return model
 
 
-def y_net_g(debug_dict, pretrained=True, n=1):
+def y_net_g(debug_dict=DEBUG, pretrained=True, n=1):
     constructor = ModelConstructor(debug=debug_dict, n=n, **_DEFAULT_CFG)
-    iter_param, model, model_kwargs = constructor.prepare('y_net_g').update(skeleton_enabled=True,
-                                                                            **_BASE_Y_NET_CFG).build()
+    _BASE_Y_NET_CFG['skeleton_enabled'] = True
+    iter_param, model, model_kwargs = constructor.prepare('y_net_g').update(**_BASE_Y_NET_CFG, n=n).build()
     if pretrained:
         from torch import load
-        if os.path.exists(WEIGHTS_PATH):
+        if not os.path.exists(WEIGHTS_PATH):
             os.mkdir(WEIGHTS_PATH)
         path = os.path.join(WEIGHTS_PATH, 'y_net_m7.pth')
         download_google('1WJ8vEh6TWeKPE2nQKBXLXygrVwk7LHVm', path)

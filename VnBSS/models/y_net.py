@@ -1,13 +1,12 @@
+from typing import List
+
 import matplotlib.pyplot as plt
-import numpy as np
 import torch
 from flerken.models import UNet
-from functools import partial
 from numpy import float32
 from torch import nn, istft
 from torch.nn.functional import binary_cross_entropy_with_logits, l1_loss, mse_loss
 from torchaudio.transforms import Spectrogram, MelScale, InverseMelScale
-from typing import List
 
 from .llcp import Video_Model
 from .resnet import mc3_18
@@ -45,7 +44,6 @@ class YNet(UNet):
                  # Fourier Transform flags
                  log_sp_enabled: bool, mel_enabled: bool, complex_enabled: bool,
                  weighted_loss: bool, loss_on_mask: bool, binary_mask: bool,
-                 transformer_enabled: bool,
                  downsample_coarse: bool, downsample_interp: bool,
                  # Audiovisual flags
                  video_enabled: bool,
@@ -77,7 +75,6 @@ class YNet(UNet):
                                    **kwargs)
         # Flags
         self.transformer_enabled = False  # Deleted from code for simplicity
-
 
         self.video_enabled = video_enabled
         self.video_temporal_features = video_temporal_features
@@ -154,8 +151,13 @@ class YNet(UNet):
         self.sp2mel = MelScale(sample_rate=self._audio_samplerate, n_mels=self._n_mel)
         self.mel2sp = InverseMelScale(n_stft=self._sp_freq_shape, n_mels=self._n_mel,
                                       sample_rate=self._audio_samplerate)
-        self.istft = partial(istft, n_fft=self._n_fft, hop_length=self._hop_length, length=self._audio_length,
-                             window=torch.hann_window(self._n_fft).cuda())  # Not ready for multiGPU
+        # self.istft = partial(istft, n_fft=self._n_fft, hop_length=self._hop_length, length=self._audio_length,
+        #                      window=torch.hann_window(self._n_fft).cuda())  # Not ready for multiGPU
+        self._window = torch.hann_window(self._n_fft)
+
+    def istft(self, x):
+        return istft(x, n_fft=self._n_fft, hop_length=self._hop_length, length=self._audio_length,
+                     window=torch.hann_window(self._n_fft))
 
     def wav2sp(self, src):  # Func should be eventually deleted
         return self.wav2sp_train(src)
