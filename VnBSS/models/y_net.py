@@ -156,8 +156,7 @@ class YNet(UNet):
         self._window = torch.hann_window(self._n_fft)
 
     def istft(self, x):
-        return istft(x, n_fft=self._n_fft, hop_length=self._hop_length, length=self._audio_length,
-                     window=torch.hann_window(self._n_fft))
+        return istft(x, n_fft=self._n_fft, hop_length=self._hop_length, length=self._audio_length, window=self._window)
 
     def wav2sp(self, src):  # Func should be eventually deleted
         return self.wav2sp_train(src)
