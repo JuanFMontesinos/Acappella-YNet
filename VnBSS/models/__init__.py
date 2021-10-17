@@ -311,8 +311,9 @@ def download_google(fileID, dst):
 
 def y_net_mr(debug_dict=DEBUG, pretrained=True, n=1):
     constructor = ModelConstructor(debug=debug_dict, n=n, **_DEFAULT_CFG)
-    _BASE_Y_NET_CFG['video_enabled'] = True
-    iter_param, model, model_kwargs = constructor.prepare('y_net_m').update(**_BASE_Y_NET_CFG).build()
+    kwargs = copy(_BASE_Y_NET_CFG)
+    kwargs['video_enabled'] = True
+    iter_param, model, model_kwargs = constructor.prepare('y_net_m').update(**kwargs).build()
     if pretrained:
         from torch import load
         if not os.path.exists(WEIGHTS_PATH):
@@ -326,8 +327,9 @@ def y_net_mr(debug_dict=DEBUG, pretrained=True, n=1):
 
 def y_net_m(debug_dict=DEBUG, pretrained=True, n=1):
     constructor = ModelConstructor(debug=debug_dict, n=n, **_DEFAULT_CFG)
-    _BASE_Y_NET_CFG['video_enabled'] = True
-    iter_param, model, model_kwargs = constructor.prepare('y_net_m').update(**_BASE_Y_NET_CFG).build()
+    kwargs = copy(_BASE_Y_NET_CFG)
+    kwargs['video_enabled'] = True
+    iter_param, model, model_kwargs = constructor.prepare('y_net_m').update(**kwargs).build()
     if pretrained:
         from torch import load
         if not os.path.exists(WEIGHTS_PATH):
@@ -341,8 +343,9 @@ def y_net_m(debug_dict=DEBUG, pretrained=True, n=1):
 
 def y_net_gr(debug_dict=DEBUG, pretrained=True, n=1):
     constructor = ModelConstructor(debug=debug_dict, n=n, **_DEFAULT_CFG)
-    _BASE_Y_NET_CFG['skeleton_enabled'] = True
-    iter_param, model, model_kwargs = constructor.prepare('y_net_g').update(**_BASE_Y_NET_CFG, n=n).build()
+    kwargs = copy(_BASE_Y_NET_CFG)
+    kwargs['skeleton_enabled'] = True
+    iter_param, model, model_kwargs = constructor.prepare('y_net_g').update(**kwargs, n=n).build()
     if pretrained:
         from torch import load
         if not os.path.exists(WEIGHTS_PATH):
@@ -356,8 +359,9 @@ def y_net_gr(debug_dict=DEBUG, pretrained=True, n=1):
 
 def y_net_g(debug_dict=DEBUG, pretrained=True, n=1):
     constructor = ModelConstructor(debug=debug_dict, n=n, **_DEFAULT_CFG)
-    _BASE_Y_NET_CFG['skeleton_enabled'] = True
-    iter_param, model, model_kwargs = constructor.prepare('y_net_g').update(**_BASE_Y_NET_CFG, n=n).build()
+    kwargs = copy(_BASE_Y_NET_CFG)
+    kwargs['skeleton_enabled'] = True
+    iter_param, model, model_kwargs = constructor.prepare('y_net_g').update(**kwargs, n=n).build()
     if pretrained:
         from torch import load
         if not os.path.exists(WEIGHTS_PATH):
