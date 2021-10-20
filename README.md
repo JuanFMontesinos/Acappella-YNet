@@ -3,7 +3,7 @@
 Official implementation of  *A cappella: Audio-visual Singing VoiceSeparation*, British Machine Vision Conference 2021
 
 Project page: [ipcv.github.io/Acappella/](https://ipcv.github.io/Acappella/)  
-Paper: [Arxiv](https://arxiv.org/abs/2104.09946v1), [Supplementary Material](https://raw.githubusercontent.com/IPCV/Acappella/master/supplementary_material.pdf),
+Paper: [Arxiv](https://arxiv.org/abs/2104.09946), [Supplementary Material](https://raw.githubusercontent.com/IPCV/Acappella/master/supplementary_material.pdf),
 BMVC (not available yet)  
 
 
