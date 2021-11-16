@@ -321,7 +321,7 @@ def y_net_mr(debug_dict=DEBUG, pretrained=True, n=1):
         path = os.path.join(WEIGHTS_PATH, 'y_net_mr7.pth')
         download_google('1dEBboJPEJSMrIZSxMTSBlQzWPzsdmUdm', path)
         state_dict = load(path, map_location=lambda storage, loc: storage)
-        model.load_state_dict(state_dict, strict=True)
+        model.load_state_dict(state_dict, strict=False)
     return model
 
 
@@ -337,7 +337,7 @@ def y_net_m(debug_dict=DEBUG, pretrained=True, n=1):
         path = os.path.join(WEIGHTS_PATH, 'y_net_m7.pth')
         download_google('1HP1O9JiDJx5LuaJA3exYVvnd6oOcITHN', path)
         state_dict = load(path, map_location=lambda storage, loc: storage)
-        model.load_state_dict(state_dict, strict=True)
+        model.load_state_dict(state_dict, strict=False)
     return model
 
 
@@ -353,7 +353,7 @@ def y_net_gr(debug_dict=DEBUG, pretrained=True, n=1):
         path = os.path.join(WEIGHTS_PATH, 'y_net_gr7.pth')
         download_google('1GN1bGyp1TlZkkgSQMwI_CGOskWXNLjxd', path)
         state_dict = load(path, map_location=lambda storage, loc: storage)
-        model.load_state_dict(state_dict, strict=True)
+        model.load_state_dict(state_dict, strict=False)
     return model
 
 
@@ -369,5 +369,5 @@ def y_net_g(debug_dict=DEBUG, pretrained=True, n=1):
         path = os.path.join(WEIGHTS_PATH, 'y_net_g7.pth')
         download_google('1WJ8vEh6TWeKPE2nQKBXLXygrVwk7LHVm', path)
         state_dict = load(path, map_location=lambda storage, loc: storage)
-        model.load_state_dict(state_dict, strict=True)
+        model.load_state_dict(state_dict, strict=False)
     return model
