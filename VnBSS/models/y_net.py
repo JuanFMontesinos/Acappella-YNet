@@ -146,8 +146,12 @@ class YNet(UNet):
 
     def _define_fourier_operators(self):
         # FOURIER TRANSFORMS (for waveform to spectrogram)
+        try:
+            self.wav2sp_train = Spectrogram(n_fft=self._n_fft, power=None, hop_length=self._hop_length,
+                                            return_complex=False)
+        except TypeError:
+            self.wav2sp_train = Spectrogram(n_fft=self._n_fft, power=None, hop_length=self._hop_length)
 
-        self.wav2sp_train = Spectrogram(n_fft=self._n_fft, power=None, hop_length=self._hop_length)
         self.sp2mel = MelScale(sample_rate=self._audio_samplerate, n_mels=self._n_mel)
         self.mel2sp = InverseMelScale(n_stft=self._sp_freq_shape, n_mels=self._n_mel,
                                       sample_rate=self._audio_samplerate)

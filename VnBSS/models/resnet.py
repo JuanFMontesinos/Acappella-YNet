@@ -1,6 +1,11 @@
 from torchvision.models.video.resnet import VideoResNet as VideoResNet_or, model_urls, BasicBlock, BasicStem, \
     Conv3DSimple, Conv3DNoTemporal
-from torchvision.models.utils import load_state_dict_from_url
+
+try:
+    from torchvision.models.utils import load_state_dict_from_url
+except:
+    from torchvision._internally_replaced_utils import load_state_dict_from_url  # pytorch>=1.10
+
 from torch import nn
 
 
