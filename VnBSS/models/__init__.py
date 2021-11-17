@@ -1,8 +1,15 @@
 import inspect
 import os
 from copy import copy
-
+import torch
 from ..utils import ParamFinder
+
+
+def torch_version():
+    string = torch.__version__
+    segments = string.split('.')
+    return int(segments[0]), int(segments[1])
+
 
 __all__ = ['ModelConstructor', 'y_net_mr', 'y_net_gr', 'y_net_g', 'y_net_m']
 
@@ -321,10 +328,9 @@ def y_net_mr(debug_dict=DEBUG, pretrained=True, n=1):
         path = os.path.join(WEIGHTS_PATH, 'y_net_mr7.pth')
         download_google('1dEBboJPEJSMrIZSxMTSBlQzWPzsdmUdm', path)
         state_dict = load(path, map_location=lambda storage, loc: storage)
-        try:
-            model.load_state_dict(state_dict, strict=True)
-        except RuntimeError:
-            state_dict['sp2mel.fb']=torch.rand(201,80)
+        if torch_version()[0] >= 1 and torch_version()[1] >= 10:
+            state_dict['sp2mel.fb'] = torch.rand(201, 80)
+        model.load_state_dict(state_dict, strict=True)
     return model
 
 
@@ -340,10 +346,9 @@ def y_net_m(debug_dict=DEBUG, pretrained=True, n=1):
         path = os.path.join(WEIGHTS_PATH, 'y_net_m7.pth')
         download_google('1HP1O9JiDJx5LuaJA3exYVvnd6oOcITHN', path)
         state_dict = load(path, map_location=lambda storage, loc: storage)
-        try:
-            model.load_state_dict(state_dict, strict=True)
-        except RuntimeError:
-            state_dict['sp2mel.fb']=torch.rand(201,80)
+        if torch_version()[0] >= 1 and torch_version()[1] >= 10:
+            state_dict['sp2mel.fb'] = torch.rand(201, 80)
+        model.load_state_dict(state_dict, strict=True)
     return model
 
 
@@ -359,10 +364,9 @@ def y_net_gr(debug_dict=DEBUG, pretrained=True, n=1):
         path = os.path.join(WEIGHTS_PATH, 'y_net_gr7.pth')
         download_google('1GN1bGyp1TlZkkgSQMwI_CGOskWXNLjxd', path)
         state_dict = load(path, map_location=lambda storage, loc: storage)
-        try:
-            model.load_state_dict(state_dict, strict=True)
-        except RuntimeError:
-            state_dict['sp2mel.fb']=torch.rand(201,80)
+        if torch_version()[0] >= 1 and torch_version()[1] >= 10:
+            state_dict['sp2mel.fb'] = torch.rand(201, 80)
+        model.load_state_dict(state_dict, strict=True)
     return model
 
 
@@ -378,8 +382,7 @@ def y_net_g(debug_dict=DEBUG, pretrained=True, n=1):
         path = os.path.join(WEIGHTS_PATH, 'y_net_g7.pth')
         download_google('1WJ8vEh6TWeKPE2nQKBXLXygrVwk7LHVm', path)
         state_dict = load(path, map_location=lambda storage, loc: storage)
-        try:
-            model.load_state_dict(state_dict, strict=True)
-        except RuntimeError:
-            state_dict['sp2mel.fb']=torch.rand(201,80)
+        if torch_version()[0] >= 1 and torch_version()[1] >= 10:
+            state_dict['sp2mel.fb'] = torch.rand(201, 80)
+        model.load_state_dict(state_dict, strict=True)
     return model
