@@ -45,6 +45,7 @@ Check a demo fully working:
 # Training / Using DEV code
 ### Training
 The most difficult part is to prepare the dataset as everything is builded upon a very specific format.  
+Download the code and set your dataset paths at `config>dataset_paths.json`  
 To run training:  
 `python run.py -m model_name --workname experiment_name --arxiv_path directory_of_experiments --pretrained_from path_pret_weights`  
 You can inspect the argparse at `default.py`>`argparse_default`.  

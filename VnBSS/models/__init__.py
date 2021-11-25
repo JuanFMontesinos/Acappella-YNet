@@ -13,7 +13,7 @@ def torch_version():
 
 __all__ = ['ModelConstructor', 'y_net_mr', 'y_net_gr', 'y_net_g', 'y_net_m']
 
-llcp = {
+llcp_kw = {
     # Audiovisual flags
     "video_enabled": False,
     "llcp_enabled": True,
@@ -21,7 +21,7 @@ llcp = {
     "remix_input": False,
     "remix_coef": 0.5,
 }
-llcp_r = {
+llcp_r_kw = {
     # Audiovisual flags
     "video_enabled": False,
     "llcp_enabled": True,
@@ -30,7 +30,7 @@ llcp_r = {
     "remix_coef": 0.5,
 }
 
-y_net_m = {
+y_net_m_kw = {
     # Audiovisual flags
     "video_enabled": True,
     "llcp_enabled": False,
@@ -44,7 +44,7 @@ y_net_m = {
     "architecture": "sop",
     "mode": "upsample",
 }
-u_net = {
+u_net_kw = {
     # Audiovisual flags
     "video_enabled": False,
     "llcp_enabled": False,
@@ -58,7 +58,7 @@ u_net = {
     "architecture": "sop",
     "mode": "upsample",
 }
-y_net_r = {
+y_net_r_kw = {
     # Audiovisual flags
     "video_enabled": True,
     "llcp_enabled": False,
@@ -72,7 +72,7 @@ y_net_r = {
     "remix_coef": 0.5,
     "video_temporal_features": 16
 }
-y_net_g = {
+y_net_g_kw = {
     # Audiovisual flags
     "video_enabled": False,
     "llcp_enabled": False,
@@ -86,7 +86,7 @@ y_net_g = {
     "remix_coef": 0.5,
     "video_temporal_features": 16
 }
-y_net_gr = {
+y_net_gr_kw = {
     # Audiovisual flags
     "video_enabled": False,
     "llcp_enabled": False,
@@ -123,6 +123,9 @@ class ModelConstructor:
 
     def prepare(self, model):
         self.model = model
+        assert model in globals(), f'The model "{model}" is not implemented'
+        new_args = globals()[f'{model}_kw']
+        self.common_kwargs.update(new_args)
         return self
 
     def update(self, **kwargs):
