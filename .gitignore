@@ -10,7 +10,6 @@ the_circle_of_life/
 # Distribution / packaging
 .Python
 config/trace_paths.json
-config/dataset_paths.json
 build/
 debug_dir/
 develop-eggs/
