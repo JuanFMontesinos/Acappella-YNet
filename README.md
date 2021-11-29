@@ -72,7 +72,10 @@ Each effective model is wrapped by a `nn.Module` which takes care of computing t
 etcetera... This wrapper can be found at `VnBSS`>`models`>`y_net.py`>`YNet`. To get rid of this you can simply inherit the class,
 take minimum layers and keep the `core_forward` method, which is the inference step without the miscelanea.  
 
-## Downloading the datasets  
+## Downloading the datasets
+Acappella's  mock up files can be found in [Gdrive](https://drive.google.com/file/d/1RyCeKJP4ttnkankUV2D7VVaNv3qCi5LU/view?usp=sharing).  
+Audioset's mock up files can be found in [Gdrive](https://drive.google.com/file/d/1-OxJgjmV2IZVroI9S4oNGU57sv_tbZqX/view?usp=sharing)  
+These files can be used to debug the code with a minimal dataset example.  
 To download the Acappella Dataset run the script at `preproc`>`preprocess.py`  
 To download the demos used in the website run `preproc`>`demo_preprocessor.py`  
 Audioset can be downloaded via webapp, `streamlit run audioset.py`  
