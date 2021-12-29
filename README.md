@@ -4,7 +4,7 @@ Official implementation of  *A cappella: Audio-visual Singing VoiceSeparation*, 
 
 Project page: [ipcv.github.io/Acappella/](https://ipcv.github.io/Acappella/)  
 Paper: [Arxiv](https://arxiv.org/abs/2104.09946), [Supplementary Material](https://raw.githubusercontent.com/IPCV/Acappella/master/supplementary_material.pdf),
-BMVC (not available yet)  
+[BMVC](https://www.bmvc2021-virtualconference.com/assets/papers/0971.pdf)   
 
 
 ## Running a demo / Y-Net Inference
