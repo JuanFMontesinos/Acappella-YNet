@@ -1,8 +1,6 @@
 from typing import List
-
-import matplotlib.pyplot as plt
 import torch
-from flerken.models import UNet
+
 from numpy import float32
 from torch import nn, istft
 from torch.nn.functional import binary_cross_entropy_with_logits, l1_loss, mse_loss
@@ -11,7 +9,7 @@ from torchaudio.transforms import Spectrogram, MelScale, InverseMelScale
 from .llcp import Video_Model
 from .resnet import mc3_18
 from .st_gcn import ST_GCN
-from ..utils.loss import BatchedContrastiveLoss as ContrastiveLoss
+from .unet import UNet
 
 __all__ = ['YNet']
 K = 10
