@@ -22,7 +22,9 @@ Examples can be found at `y_net`>`examples`. Also you can have a look at `tcol.p
 computes the demos shown in the website.  
 Check a demo fully working:  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1jFDy9vkuXDqyS63y0SCHkNTb7p494fSp?usp=sharing)
-
+## Docker  
+Check out the [Y-net-gr Docker branch](https://github.com/JuanFMontesinos/Acappella-YNet/tree/docker)  
+`sudo docker run -p 8501:8501 --gpus all --rm -ti --ipc=host jfmontgar/acappella-y-net:y_net_gr`
 ## Citation
 ```
 @inproceedings{acappella,
