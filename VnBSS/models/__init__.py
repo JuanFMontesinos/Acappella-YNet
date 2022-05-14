@@ -315,9 +315,9 @@ DEBUG = {'isnan': True, 'ds_autogen': False, "overfit": False, 'verbose': False}
 
 #################################
 def download_google(fileID, dst):
-    from google_drive_downloader import GoogleDriveDownloader as gdd
-    gdd.download_file_from_google_drive(file_id=fileID, dest_path=dst)
-
+    import gdown
+    url = f"https://drive.google.com/uc?id={fileID}"
+    gdown.download(url, dst, quiet=False)
 
 def y_net_mr(debug_dict=DEBUG, pretrained=True, n=1):
     constructor = ModelConstructor(debug=debug_dict, n=n, **_DEFAULT_CFG)
