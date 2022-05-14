@@ -4,3 +4,4 @@ acappella-info==0.1.post1
 torch-mir-eval==0.4
 TorchTree-nightly==0.0.3.post1
 flerken-nightly==1.7.post5
+gdown
